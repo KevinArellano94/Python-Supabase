@@ -1,0 +1,32 @@
+from typing import Dict, Optional
+
+
+class APIError(Exception):
+    """
+    Base exception for all API errors.
+    """
+
+    _raw_error: Dict[str, str]
+    message: Optional[str]
+    code: Optional[str]
+    hint: Optional[str]
+    details: Optional[str]
+
+    def __init__(self, error: Dict[str, str]) -> None:
+        self._raw_error = error
+        self.message = error.get("message")
+        self.code = error.get("code")
+        self.hint = error.get("hint")
+        self.details = error.get("details")
+        Exception.__init__(self, str(self))
+
+    def __repr__(self) -> str:
+        error_text = f"Error {self.code}:" if self.code else ""
+        message_text = f"\nMessage: {self.message}" if self.message else ""
+        hint_text = f"\nHint: {self.hint}" if self.hint else ""
+        details_text = f"\nDetails: {self.details}" if self.details else ""
+        complete_error_text = f"{error_text}{message_text}{hint_text}{details_text}"
+        return complete_error_text or "Empty error"
+
+    def json(self) -> Dict[str, str]:
+        return self._raw_error

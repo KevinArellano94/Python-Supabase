@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: realtime
+Version: 0.0.4
+Summary: 
+Author: Joel
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: python-dateutil (>=2.8.1,<3.0.0)
+Requires-Dist: websockets (>=9.1,<10.0)
