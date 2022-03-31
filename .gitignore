@@ -1,2 +1,4 @@
 
 variable.env
+*.env
+*.env
