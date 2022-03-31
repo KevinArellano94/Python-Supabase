@@ -8,7 +8,6 @@ url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 data = supabase.table("table_name").select("*").execute()
-# Assert we pulled real data.
 assert len(data.data) > 0
 
 print(data)
